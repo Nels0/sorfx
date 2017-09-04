@@ -64,6 +64,15 @@ class CfgVehicles
 		isDisposable = 0;
 		functionPriority = 1;
 		isGlobal = 2; //Not sure what 1 vs 2 is
+
+		class Atrributes: AttributesBase
+		{
+
+		};
+		class ModuleDescription: ModuleDescription
+		{
+			description = "Turns lights on or off."
+		};
 	};
 };
 
