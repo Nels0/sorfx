@@ -94,6 +94,7 @@ class CfgVehicles
 		displayName = "Light Switch (3den)"
 		function = "SORFX_lightSwitch"
 		is3DEN = 1;
+		scope = 0;
 	};
 };
 

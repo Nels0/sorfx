@@ -7,7 +7,12 @@ _activated = _this param [2,true,[true]];
 
 if (_activated) then{
 	_onoff = _logic getVariable ["Lights",1];
-	_range = _logic getVariable ["Range", 0];
+}
+else{
+	_onoff = !_logic getVariable ["Lights",1];
+};
+
+_range = _logic getVariable ["Range", 0];
 	_pos = getPos _logic;
 	switch (_onoff) do { 
 		case false : {
@@ -38,5 +43,3 @@ if (_activated) then{
 		], 
 		_range
 	];
-
-};
