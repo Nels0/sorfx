@@ -18,6 +18,7 @@ class CfgFunctions
 		{
 			file = "SORFX\functions";
 			class lightSwitch;
+			class lightSwitch_not3den;
 		};
 
 	};
@@ -58,7 +59,7 @@ class CfgVehicles
 		displayName = "Light Switch";
 		category = "SOR Effects";
 		vehicleClass = "Modules";
-		function = "SORFX_fnc_lightSwitch";
+		function = "SORFX_fnc_lightSwitch_not3den";
 		is3DEN = 1;
 		isTriggerActivated = 1;
 		isDisposable = 0;
