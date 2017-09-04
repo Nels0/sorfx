@@ -1,12 +1,42 @@
 
-params ["_onoff","_pos","_range",];
+//params ["_onoff","_pos","_range",];
+private ["_logic","_onoff","_range","_pos","_lightHit"];
 
-_types = ["Lamps_Base_F", "PowerLines_base_F","Land_PowerPoleWooden_L_F"];
+_logic = _this param [0,objnull,[objnull]];
+_activated = _this param [2,true,[true]];
 
-
-for [{_i=0},{_i < (count _types)},{_i=_i+1}] do
+if (_activated) then{
+	_onoff = _logic getVariable ["Lights",1];
+	_range = _logic getVariable ["Range", 0];
+	_pos = getPos _logic;
+	switch (_onoff) do { 
+		case false : {
+			systemChat "0.97";
+			_lightHit = 0.97;
+		}; 
+		case true : 
+		{
+			systemChat "0";
+			_lightHit = 0;
+		}; 
+	};
+	
+	
 	{
-		_lamps = _pos nearObjects [_types select _i, _range];
-		sleep 1;
-	{_x setDamage _onoff} forEach _lamps;
+		for "_i" from 0 to count getAllHitPointsDamage _x do
+		{
+			_x setHitIndex [_i, _lightHit];
+		};
+	} 
+	forEach nearestObjects 
+	[
+		_pos, 
+		[
+			"Lamps_base_F",
+			"PowerLines_base_F",
+			"PowerLines_Small_base_F"
+		], 
+		_range
+	];
+
 };

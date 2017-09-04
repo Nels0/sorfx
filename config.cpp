@@ -4,7 +4,7 @@ class CfgPatches
 	{
 		author = "Nels0";
 		units[] = {"SORFX_lightSwitch"};
-		requiredVersion= 1.60
+		requiredVersion= 1.60;
 		requiredAddons[] = {"A3_Modules_F","A3_Modules_F_Curator"};
 	};
 };
@@ -57,23 +57,43 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "Light Switch";
-		category = "SOR Effects";
+		category = "NO_CATEGORY";
 		vehicleClass = "Modules";
 		function = "SORFX_fnc_lightSwitch_not3den";
-		is3DEN = 1;
+		is3DEN = 0;
 		isTriggerActivated = 1;
 		isDisposable = 0;
 		functionPriority = 1;
-		isGlobal = 2; //Not sure what 1 vs 2 is
+		isGlobal = 1; //Not sure what 1 vs 2 is
 
-		class Atrributes: AttributesBase
+		class Arguments
 		{
+			class Lights
+			{
+				displayName = "Lights";
+				description = "Set lights on or off";
+				typeName = "BOOL";
+				defaultValue = 1;
+			};
+			class Range
+			{
+				displayName = "Range";
+				description = "Radius of lights to turn off";
+				typeName = "NUMBER";
+				defaultValue = 0;
+			};
 
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description = "Turns lights on or off."
+			description = "Turns lights on or off.";
 		};
+	};
+	class SORFX_modulelights3DEN: SORFX_modulelights
+	{
+		displayName = "Light Switch (3den)"
+		function = "SORFX_lightSwitch"
+		is3DEN = 1;
 	};
 };
 
