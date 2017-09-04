@@ -16,12 +16,10 @@ _range = _logic getVariable ["Range", 0];
 	_pos = getPos _logic;
 	switch (_onoff) do { 
 		case false : {
-			systemChat "0.97";
 			_lightHit = 0.97;
 		}; 
 		case true : 
 		{
-			systemChat "0";
 			_lightHit = 0;
 		}; 
 	};
