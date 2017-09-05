@@ -34,7 +34,7 @@ switch _mode do {
 	// When removed from the world (i.e., by deletion or undoing creation)
 	case "unregisteredFromWorld3DEN": {
 		_logic = _input param [0,objNull,[objNull]]; // Module logic
-		_lightHit = 0;
+		_onoff = true;
 	};
 	// When connection to object changes (i.e., new one is added or existing one removed)
 	case "connectionChanged3DEN": {
