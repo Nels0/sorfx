@@ -1,5 +1,6 @@
 private ["_logic","_onoff","_range","_pos","_lightHit"];
 
+disableSerialization;
 _mode = param [0,"",[""]];
 _input = param [1,[],[[]]];
 
