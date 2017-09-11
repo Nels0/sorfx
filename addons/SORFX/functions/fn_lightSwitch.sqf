@@ -1,6 +1,6 @@
 disableSerialization;
 
-private ["_logic","_onoff","_range","_pos","_lightHit","posLast","rangeLast","checkLast"];
+private ["_logic","_onoff","_range","_pos","_lightHit","_posLast","_rangeLast","_checkLast"];
 
 _mode = param [0,"",[""]];
 _input = param [1,[],[[]]];
@@ -11,8 +11,8 @@ _range = _logic getVariable ["Range", 0];
 _pos = getPos _logic;
 
 //get saved variables
-_posLast = _logic getVariable["positionLast"];
-_rangeLast = _logic getVariable["rangeLast"];
+_posLast = _logic getVariable["positionLast",objNull];
+_rangeLast = _logic getVariable["rangeLast",0];
 
 switch _mode do {
 	// Default object init
@@ -23,7 +23,7 @@ switch _mode do {
 		_onoff = _logic getVariable ["Lights",1];
 		_range = _logic getVariable ["Range", 0];
 		_pos = getPos _logic;
-		_logic setVariable ["",];
+		//_logic setVariable ["",];
 	};
 	// When some attributes were changed (including position and rotation)
 	case "attributesChanged3DEN": {
@@ -65,7 +65,7 @@ switch _mode do {
 };
 
 //turn last lights back on
-if (_checklast) then {
+if (_checkLast) then {
 	{for "_i" from 0 to count getAllHitPointsDamage _x do { _x setHitIndex [_i, 0];};} forEach nearestObjects [	_posLast, [ "Lamps_base_F", "PowerLines_base_F", "PowerLines_Small_base_F"], _rangeLast];
 };
 
