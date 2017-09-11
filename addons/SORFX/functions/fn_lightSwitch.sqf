@@ -1,14 +1,18 @@
-private ["_logic","_onoff","_range","_pos","_lightHit"];
-
 disableSerialization;
+
+private ["_logic","_onoff","_range","_pos","_lightHit","posLast","rangeLast","checkLast"];
+
 _mode = param [0,"",[""]];
 _input = param [1,[],[[]]];
 
-
+_logic = _input param [0,objNull,[objNull]];
 _onoff = _logic getVariable ["Lights",1];
 _range = _logic getVariable ["Range", 0];
 _pos = getPos _logic;
 
+//get saved variables
+_posLast = _logic getVariable["positionLast"];
+_rangeLast = _logic getVariable["rangeLast"];
 
 switch _mode do {
 	// Default object init
@@ -19,6 +23,7 @@ switch _mode do {
 		_onoff = _logic getVariable ["Lights",1];
 		_range = _logic getVariable ["Range", 0];
 		_pos = getPos _logic;
+		_logic setVariable ["",];
 	};
 	// When some attributes were changed (including position and rotation)
 	case "attributesChanged3DEN": {
@@ -26,6 +31,7 @@ switch _mode do {
 		_onoff = _logic getVariable ["Lights",1];
 		_range = _logic getVariable ["Range", 0];
 		_pos = getPos _logic;
+		_checklast = true;
 	};
 	// When added to the world (e.g., after undoing and redoing creation)
 	case "registeredToWorld3DEN": {
@@ -46,14 +52,21 @@ switch _mode do {
 			case false : { _onoff = true }; 
 			default { _onoff = true }; 
 		};
+		_checklast = true;
 	};
 	// When object is being dragged
 	case "dragged3DEN": {
 		_logic = _input param [0,objNull,[objNull]]; // Module logic
 		_onoff = _logic getVariable ["Lights",1];
 		_range = _logic getVariable ["Range", 0];
-		_pos = getPos _logic;
+
+		_checklast = true;
 	};
+};
+
+//turn last lights back on
+if (_checklast) then {
+	{for "_i" from 0 to count getAllHitPointsDamage _x do { _x setHitIndex [_i, 0];};} forEach nearestObjects [	_posLast, [ "Lamps_base_F", "PowerLines_base_F", "PowerLines_Small_base_F"], _rangeLast];
 };
 
 switch (_onoff) do { 
@@ -66,20 +79,13 @@ switch (_onoff) do {
 	}; 
 };
 
-{
-	for "_i" from 0 to count getAllHitPointsDamage _x do
-	{
-		_x setHitIndex [_i, _lightHit];
-	};
-} 
 
-forEach nearestObjects 
-[
-	_pos, 
-	[
-		"Lamps_base_F",
-		"PowerLines_base_F",
-		"PowerLines_Small_base_F"
-	], 
-	_range
-]
+{for "_i" from 0 to count getAllHitPointsDamage _x do { _x setHitIndex [_i, _lightHit];};} forEach nearestObjects [	_pos, [ "Lamps_base_F", "PowerLines_base_F", "PowerLines_Small_base_F"], _range];
+
+
+//save previous positions
+_logic setVariable["positionLast", _pos];
+_logic setVariable["rangeLast", _range];
+
+true 
+
