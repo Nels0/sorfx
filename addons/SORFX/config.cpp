@@ -59,8 +59,8 @@ class CfgVehicles
 		displayName = "Light Switch";
 		category = "NO_CATEGORY";
 		vehicleClass = "Modules";
-		function = "SORFX_fnc_lightSwitch_not3den";
-		is3DEN = 0;
+		function = "SORFX_fnc_lightSwitch";
+		is3DEN = 1;
 		isTriggerActivated = 1;
 		isDisposable = 0;
 		functionPriority = 1;
@@ -71,7 +71,7 @@ class CfgVehicles
 			class Lights
 			{
 				displayName = "Lights";
-				description = "Set lights on or off";
+				description = "Set lights on or off or on again";
 				typeName = "BOOL";
 				defaultValue = 1;
 			};
@@ -89,12 +89,12 @@ class CfgVehicles
 			description = "Turns lights on or off.";
 		};
 	};
-	class SORFX_modulelights3DEN: SORFX_modulelights
+	class SORFX_modulelights3DEN: SORFX_modulelights //Ol reliable function.
 	{
-		displayName = "Light Switch (3den)"
-		function = "SORFX_lightSwitch"
-		is3DEN = 1;
-		scope = 2;
+		displayName = "Light Switch (not 3DEN)"
+		function = "SORFX_fnc_lightSwitch_not3den"
+		is3DEN = 0;
+		scope = 0;
 	};
 };
 
