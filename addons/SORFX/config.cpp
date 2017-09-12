@@ -1,11 +1,20 @@
 class CfgPatches
 {
-	class 160_Lights
+	class SORFX_sormodules
 	{
 		author = "Nels0";
-		units[] = {"SORFX_lightSwitch"};
+		units[] = {"SORFX_modulelights"};
 		requiredVersion= 1.60;
 		requiredAddons[] = {"A3_Modules_F","A3_Modules_F_Curator"};
+	};
+};
+
+class CfgFactionClasses
+{
+	class NO_CATEGORY;
+	class SORFX_MODULES: NO_CATEGORY
+	{
+		displayName = "SOR Effects";
 	};
 };
 
@@ -16,20 +25,11 @@ class CfgFunctions
 		tag = "SORFX";
 		class main
 		{
-			file = "SORFX\functions";
+			file = "modules\functions";
 			class lightSwitch;
 			class lightSwitch_not3den;
 		};
 
-	};
-};
-
-class CfgFactionClasses
-{
-	class NO_CATEGORY;
-	class SORFX_lightSwitch: NO_CATEGORY
-	{
-		displayName = "SOR Effects";
 	};
 };
 
@@ -57,7 +57,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "Light Switch";
-		category = "NO_CATEGORY";
+		category = "SORFX_MODULES";
 		vehicleClass = "Modules";
 		function = "SORFX_fnc_lightSwitch";
 		is3DEN = 1;
