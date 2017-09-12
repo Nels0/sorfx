@@ -25,9 +25,9 @@ class CfgFunctions
 		tag = "SORFX";
 		class main
 		{
-			file = "modules\functions";
-			class lightSwitch;
-			class lightSwitch_not3den;
+			file = "sormodules\functions";
+			class lightSwitch {};
+			class lightSwitch_not3den {};
 		};
 
 	};
@@ -51,6 +51,7 @@ class CfgVehicles
 		class ModuleDescription
 		{
 			class EmptyDetector;
+			class AnyAI;
 		};
 	};
 	class SORFX_modulelights: Module_F
@@ -91,8 +92,8 @@ class CfgVehicles
 	};
 	class SORFX_modulelights3DEN: SORFX_modulelights //Ol reliable function.
 	{
-		displayName = "Light Switch (not 3DEN)"
-		function = "SORFX_fnc_lightSwitch_not3den"
+		displayName = "Light Switch (not 3DEN)";
+		function = "SORFX_fnc_lightSwitch_not3den";
 		is3DEN = 0;
 		scope = 0;
 	};
