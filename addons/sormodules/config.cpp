@@ -18,20 +18,6 @@ class CfgFactionClasses
 	};
 };
 
-class CfgFunctions
-{
-	class SORFX
-	{
-		tag = "SORFX";
-		class main
-		{
-			file = "sormodules\functions";
-			class lightSwitch {};
-			class lightSwitch_not3den {};
-		};
-
-	};
-};
 
 class CfgVehicles
 {
@@ -96,6 +82,21 @@ class CfgVehicles
 		function = "SORFX_fnc_lightSwitch_not3den";
 		is3DEN = 0;
 		scope = 0;
+	};
+};
+
+
+class CfgFunctions
+{
+	class SORFX
+	{
+		class Effects
+		{
+			file = "sormodules\functions";
+			class lightSwitch {};
+			class lightSwitch_not3den {};
+		};
+
 	};
 };
 
