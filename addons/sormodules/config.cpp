@@ -89,14 +89,10 @@ class CfgVehicles
 class CfgFunctions
 {
 	class SORFX
-	{
-		class Effects
-		{
-			file = "sormodules\functions";
-			class lightSwitch {};
-			class lightSwitch_not3den {};
-		};
-
+	{	
+		file = "sormodules\functions";
+		class lightSwitch {};
+		//class lightSwitch_not3den {};
 	};
 };
 
