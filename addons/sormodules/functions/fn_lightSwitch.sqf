@@ -2,6 +2,8 @@ disableSerialization;
 
 private ["_logic","_onoff","_range","_pos","_lightHit","_posLast","_rangeLast","_checkLast"];
 
+systemChat("0.97");
+
 _mode = param [0,"",[""]];
 _input = param [1,[],[[]]];
 
@@ -13,6 +15,8 @@ _pos = getPos _logic;
 //get saved variables
 _posLast = _logic getVariable["positionLast",objNull];
 _rangeLast = _logic getVariable["rangeLast",0];
+
+_checklast = false;
 
 switch _mode do {
 	// Default object init

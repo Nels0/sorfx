@@ -1,13 +1,32 @@
 class CfgPatches
 {
-	class SORFX_sormodules
+	class sorfx_sormodules
 	{
 		author = "Nels0";
-		units[] = {"SORFX_modulelights"};
+		units[] = {"sorfx_modulelights"};
 		requiredVersion= 1.60;
 		requiredAddons[] = {"A3_Modules_F","A3_Modules_F_Curator"};
 	};
 };
+
+
+class CfgFunctions
+{
+	class sorfx
+	{	
+		tag = "sorfx";
+		class main
+		{
+			file = "sormodules\functions";
+			class lightSwitch {
+   				 file = "\s\SORFX\addons\sormodules\functions\fn_lightSwitch.sqf";
+			};
+			//class lightSwitch_not3den;
+		};
+	};
+};
+
+
 
 class CfgFactionClasses
 {
@@ -40,13 +59,13 @@ class CfgVehicles
 			class AnyAI;
 		};
 	};
-	class SORFX_modulelights: Module_F
+	class sorfx_modulelights: Module_F
 	{
 		scope = 2;
 		displayName = "Light Switch";
 		category = "SORFX_MODULES";
 		vehicleClass = "Modules";
-		function = "SORFX_fnc_lightSwitch";
+		function = "sorfx_fnc_lightSwitch";
 		is3DEN = 1;
 		isTriggerActivated = 1;
 		isDisposable = 0;
@@ -76,23 +95,12 @@ class CfgVehicles
 			description = "Turns lights on or off.";
 		};
 	};
-	class SORFX_modulelights3DEN: SORFX_modulelights //Ol reliable function.
+	class sorfx_modulelights3DEN: sorfx_modulelights //Ol reliable function.
 	{
 		displayName = "Light Switch (not 3DEN)";
-		function = "SORFX_fnc_lightSwitch_not3den";
+		function = "sorfx_fnc_lightSwitch_not3den";
 		is3DEN = 0;
-		scope = 0;
-	};
-};
-
-
-class CfgFunctions
-{
-	class SORFX
-	{	
-		file = "sormodules\functions";
-		class lightSwitch {};
-		//class lightSwitch_not3den {};
+		scope = 2;
 	};
 };
 
