@@ -17,10 +17,8 @@ class CfgFunctions
 		tag = "sorfx";
 		class main
 		{
-			file = "sormodules\functions";
-			class lightSwitch {
-   				 file = "\s\SORFX\addons\sormodules\functions\fn_lightSwitch.sqf";
-			};
+			file = "\s\SORFX\addons\sormodules\functions";
+			class lightSwitch {};
 			//class lightSwitch_not3den;
 		};
 	};
