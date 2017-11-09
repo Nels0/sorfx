@@ -33,9 +33,9 @@ def check_for_obsolete_pbos(addonspath, file):
 
 def main():
     print("""
-  ####################
-  # -ACE3-SORFX Debug Build #
-  ####################
+  #####################
+  # SORFX Debug Build #
+  #####################
 """)
 
     scriptpath = os.path.realpath(__file__)

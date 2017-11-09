@@ -1,14 +1,12 @@
-disableSerialization;
+
 
 private ["_logic","_onoff","_range","_pos","_lightHit","_posLast","_rangeLast","_checkLast"];
-
-systemChat("0.97");
 
 _mode = param [0,"",[""]];
 _input = param [1,[],[[]]];
 
 _logic = _input param [0,objNull,[objNull]];
-_onoff = _logic getVariable ["Lights",1];
+_onoff = _logic getVariable ["Lights", 1];
 _range = _logic getVariable ["Range", 0];
 _pos = getPos _logic;
 
@@ -39,8 +37,6 @@ switch _mode do {
 	};
 	// When added to the world (e.g., after undoing and redoing creation)
 	case "registeredToWorld3DEN": {
-		_logic = _input param [0,objNull,[objNull]]; // Module logic
-		// ... code here...
 	};
 	// When removed from the world (i.e., by deletion or undoing creation)
 	case "unregisteredFromWorld3DEN": {
@@ -49,8 +45,6 @@ switch _mode do {
 	};
 	// When connection to object changes (i.e., new one is added or existing one removed)
 	case "connectionChanged3DEN": {
-		_logic = _input param [0,objNull,[objNull]]; // Module logic
-		_isActivated = _input param [1,true,[true]];
 		switch (_isActivated) do { 
 			case true : { _onoff = false }; 
 			case false : { _onoff = true }; 
@@ -91,5 +85,4 @@ switch (_onoff) do {
 _logic setVariable["positionLast", _pos];
 _logic setVariable["rangeLast", _range];
 
-true 
-
+true
